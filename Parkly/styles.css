@@ -1,0 +1,24 @@
+html {
+
+}
+
+#filterContainer {
+  display: flex;
+  align-items: center;
+}
+
+.parkTilePhoto {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.parkBannerPhoto {
+  height: 400px;
+  width: 90%;
+  object-fit: cover;
+}
+
+.parkPhotoGalleryImage {
+  height: 200px;
+}
