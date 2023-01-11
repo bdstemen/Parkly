@@ -1,11 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-
-const center = {
-  lat: 39.591111,
-  lng: -97.398923
-};
+import dotenv from 'dotenv';
 
 function Map(props) {
 
@@ -14,7 +10,7 @@ function Map(props) {
 
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyAikW6IzBnfco68KFsNf6BONk7NZ2edVi4"
+      googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
     >
       <GoogleMap
         mapContainerStyle={props.containerStyle}
