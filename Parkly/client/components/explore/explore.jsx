@@ -10,7 +10,7 @@ function Explore(props) {
   // State
   const [filters, setFilters] = useState({
     miles: null,
-    currentLoc: [],
+    currentLoc: props.userLocation,
     states: [],
     activities: [],
     designation: []
@@ -21,33 +21,46 @@ function Explore(props) {
     props.getParks(JSON.stringify({}));
   }, [])
 
+  function saveAndUpdateParks(id, savedStatus) {
+    props.savePark(id, savedStatus).then(() => props.getParks(JSON.stringify(filters)));
+  }
+
   return (
     <div>
-      <FilterBar
-        filters={filters}
-        setFilters={setFilters}
-        getParks={props.getParks}
-      />
-      {props.parkData && (
-        <div>
-          <Map
-            parkData={props.parkData}
-            containerStyle = {{
-              width: '800px',
-              height: '800px'
-            }}
-          />
+      <div id="filterContainer">
+        <FilterBar
+          filters={filters}
+          setFilters={setFilters}
+          getParks={props.getParks}
+        />
+      </div>
+      <div id="ExploreContainer">
+        <div id="mapContainer">
+          {props.parkData && (
+            <Map
+              parkData={props.parkData}
+              coords={{
+                lng: props.userLocation[0],
+                lat: props.userLocation[1]
+              }}
+              containerStyle = {{
+                width: '100%',
+                height: '100%'
+              }}
+            />
+          )}
         </div>
-      )}
-      <div>
-        {props.parkData && props.parkData.map((park) => (
-          <ParkTile
-            key={park._id}
-            parkData={park}
-            setSelectedParkId={props.setSelectedParkId}
-            savePark={props.savePark}
-          />
-        ))}
+        <div id="parkListContainer">
+          {props.parkData && props.parkData.map((park) => (
+            <ParkTile
+              key={park._id}
+              parkData={park}
+              setSelectedParkId={props.setSelectedParkId}
+              savePark={saveAndUpdateParks}
+              userLocation={props.userLocation}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )

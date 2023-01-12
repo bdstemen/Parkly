@@ -7,7 +7,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+      width: "150px",
     },
   },
 };
@@ -20,18 +20,6 @@ const activities = ['Astronomy', 'Stargazing', 'Food', 'Picnicking', 'Guided Tou
 
 function FilterBar(props) {
 
-  // Functions
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      var lat = position.coords.latitude;
-      var lon = position.coords.longitude;
-      props.setFilters({
-        ...props.filters,
-        currentLoc: [lon, lat]
-      })
-    });
-  }, []);
-
   function handleFilterChange(e) {
     const value = e.target.value;
     props.setFilters({
@@ -41,29 +29,8 @@ function FilterBar(props) {
   }
 
   return (
-    <div id="filterContainer">
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="statesLabel">States</InputLabel>
-        <Select
-          labelId="statesLabel"
-          id="statesCheckbox"
-          name="states"
-          multiple
-          value={props.filters.states}
-          onChange={handleFilterChange}
-          input={<OutlinedInput label="States" />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
-        >
-          {states.map((state) => (
-            <MenuItem key={state} value={state}>
-              <Checkbox checked={props.filters.states.indexOf(state) > -1} />
-              <ListItemText primary={state} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl sx={{ m: 1, width: 300 }} >
+    <>
+      <FormControl size="small" sx={{ m: 2, width: 300 }} >
         <InputLabel id="designationLabel">Park Designation</InputLabel>
         <Select
           labelId="designationLabel"
@@ -77,14 +44,14 @@ function FilterBar(props) {
           MenuProps={MenuProps}
         >
           {designations.map((designation) => (
-            <MenuItem key={designation} value={designation}>
+            <MenuItem key={designation} value={designation} sx={{ maxHeight: 40 }} >
               <Checkbox checked={props.filters.designation.indexOf(designation) > -1} />
               <ListItemText primary={designation} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ m: 1, width: 300 }} >
+      <FormControl size="small" sx={{ m: 2, width: 300 }} >
         <InputLabel id="activitiesLabel">Activities</InputLabel>
         <Select
           labelId="activitiesLabel"
@@ -98,15 +65,37 @@ function FilterBar(props) {
           MenuProps={MenuProps}
         >
           {activities.map((activity) => (
-            <MenuItem key={activity} value={activity}>
+            <MenuItem key={activity} value={activity} sx={{ maxHeight: 40 }}>
               <Checkbox checked={props.filters.activities.indexOf(activity) > -1} />
               <ListItemText primary={activity} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ m: 1, width: 150 }} >
+      <FormControl size="small" sx={{ m: 2, minWidth: "150px" }}>
+        <InputLabel id="statesLabel">States</InputLabel>
+        <Select
+          labelId="statesLabel"
+          id="statesCheckbox"
+          name="states"
+          multiple
+          value={props.filters.states}
+          onChange={handleFilterChange}
+          input={<OutlinedInput label="States" />}
+          renderValue={(selected) => selected.join(', ')}
+          MenuProps={MenuProps}
+        >
+          {states.map((state) => (
+            <MenuItem key={state} value={state} sx={{ maxHeight: 40 }}>
+              <Checkbox checked={props.filters.states.indexOf(state) > -1} />
+              <ListItemText primary={state} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <FormControl sx={{ m: 2, width: 150 }} >
         <TextField
+          size="small"
           id="outlined-basic"
           label="Distance"
           variant="outlined"
@@ -114,19 +103,20 @@ function FilterBar(props) {
           onChange={handleFilterChange}
         />
       </FormControl>
-      <FormControl>
+      <FormControl size="small">
         <Button
-          style={{ margin: 8, width: 100, height: 55 }}
+          size="small"
+          style={{ margin: 15, width: 100, height: 40, backgroundColor: "#1A3300" }}
           variant="contained"
           onClick={(e) => {
             e.preventDefault();
             console.log(props.filters);
             props.getParks(JSON.stringify(props.filters));
           }}>
-          Apply Filters
+          Apply
         </Button>
       </FormControl>
-    </div>
+    </>
   )
 };
 

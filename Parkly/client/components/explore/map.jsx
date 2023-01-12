@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import mapStyles from '../../../mapStyle.js';
 import dotenv from 'dotenv';
 
 function Map(props) {
@@ -18,15 +19,15 @@ function Map(props) {
           lat: 39.591111,
           lng: -97.398923
         }}
-        zoom={props.zoom || 4}
+        zoom={props.zoom || 7}
+        options={{ gestureHandling: 'greedy', styles: mapStyles }}
       >
         {props.parkData.map((park) => (
           <Marker
             key={park._id}
             position={{ lat: parseFloat(park.latitude), lng: parseFloat(park.longitude) }}
-            onClick={() => {
-              setShowParkDetails(park);
-            }}
+            onClick={() => {setShowParkDetails(park)}}
+            icon={{ url: '../../../mapMarker.svg', scaledSize: { width: 20, height: 20}}}
           />
         ))}
         {showParkDetails && (
