@@ -11,10 +11,21 @@ function App() {
   // State
   const [selectedParkId, setSelectedParkId] = useState('');
   const [parkData, setParkData] = useState([]);
+  const [userLocation, setUserLocation] = useState(null);
+
+  // Functions
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      setUserLocation([lon, lat]);
+      console.log('setting user location');
+    });
+  }, []);
 
   // Functions
   function savePark(id, savedStatus) {
-    axios.put(`http://localhost:3000/saved/${id}`, { saved: savedStatus });
+    return axios.put(`http://localhost:3000/saved/${id}`, { saved: savedStatus });
   }
 
   function getParks(filters) {
@@ -27,7 +38,6 @@ function App() {
         console.log('error retrieving parks:', err);
       })
       .then((results) => {
-        console.log('got data from server:', results.data);
         setParkData(results.data);
       })
   };
@@ -35,12 +45,11 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Parkly</h1>
+        <Link to="/" id="logo" className="navItem">Parkly</Link>
         <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/Explore">Explore</Link></li>
-            <li><Link to="/Saved">Saved</Link></li>
+          <ul id="navList">
+            <Link to="/Explore" className="navItem">Explore</Link>
+            <Link to="/Saved" className="navItem">Saved</Link>
           </ul>
         </nav>
       </header>
@@ -52,6 +61,10 @@ function App() {
               <Home
                 selectedParkId={selectedParkId}
                 setSelectedParkId={setSelectedParkId}
+                parkData={parkData}
+                userLocation={userLocation}
+                getParks={getParks}
+                savePark={savePark}
               />
             }
           />
@@ -64,6 +77,7 @@ function App() {
                 getParks={getParks}
                 setSelectedParkId={setSelectedParkId}
                 savePark={savePark}
+                userLocation={userLocation}
               />
             }
           />
@@ -87,13 +101,12 @@ function App() {
                 getParks={getParks}
                 setSelectedParkId={setSelectedParkId}
                 savePark={savePark}
+                userLocation={userLocation}
               />
             }
           />
         </Routes>
       </div>
-      <footer>
-      </footer>
     </div>
   )
 }
