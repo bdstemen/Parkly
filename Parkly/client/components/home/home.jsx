@@ -32,15 +32,14 @@ function Home(props) {
 
   function isClose(parkLat, parkLong) {
     let dist = Math.round(distance(props.userLocation[1], parseFloat(parkLat), props.userLocation[0], parseFloat(parkLong)));
-    console.log(dist);
     return dist < 200;
   }
 
   return (
     <div id="homePageContainer">
-      <h1 id="bannerText">Where will you go?</h1>
+      <h1 className="bannerText">Where will you go?</h1>
       <img
-        id="homePageBannerPhoto"
+        className="bannerPhoto"
         src="https://images.squarespace-cdn.com/content/v1/5e91fee3ef75447348045261/1600375376550-7UAMZ4JP9XSY3PHIXCRA/glacier-banner.jpg"
         alt="wide angle photo of national park"
       />

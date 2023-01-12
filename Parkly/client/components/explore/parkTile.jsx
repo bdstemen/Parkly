@@ -47,7 +47,7 @@ function ParkTile(props) {
       {props.parkData.saved
       ? <FaHeart
           className="saveParkIcon"
-          color="#1A3300"
+          color="white"
           onClick={(e) => {
             e.stopPropagation();
             props.savePark(props.parkData._id, !props.parkData.saved);
@@ -55,7 +55,7 @@ function ParkTile(props) {
         />
       : <FaRegHeart
           className="saveParkIcon"
-          color="#1A3300"
+          color="white"
           onClick={(e) => {
             e.stopPropagation();
             props.savePark(props.parkData._id, !props.parkData.saved);

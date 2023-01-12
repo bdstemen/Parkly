@@ -11,7 +11,6 @@ function SearchParks(props) {
 
   // Functions
   useEffect(() => {
-    console.log('sending request for names');
     axios.get(`http://localhost:3000/parkNames`)
       .catch((err) => {
         console.log('error getting park names:', err);
