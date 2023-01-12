@@ -21,21 +21,38 @@ function SearchParks(props) {
       })
   }, []);
 
-  // Navigation
-  const navigate = useNavigate();
-
-  function navToPark() {
-    navigate('/park');
-  }
-
   return (
-    <div>
+    <div id="autocompleteContainer">
       <Autocomplete
-        style={{ width: 500 }}
+        sx={{ width: "100%" }}
         options={parkNames}
         getOptionLabel={(option) => option.fullName || ""}
         isOptionEqualToValue={(option, value) => option.id === value.id}
-        renderInput={(params) => <TextField {...params} label="Park Name"/>}
+        renderInput={(params) => (
+          <TextField {...params}
+            placeholder="Search for a national park"
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                backgroundColor: "white",
+                height: "70px",
+                legend: {
+                  marginLeft: "30px"
+                }
+              },
+              "& .MuiAutocomplete-inputRoot": {
+                paddingLeft: "20px !important",
+              },
+              "& .MuiInputLabel-outlined": {
+                paddingLeft: "20px",
+              },
+              "& .MuiInputLabel-shrink": {
+                marginLeft: "20px",
+                paddingLeft: "10px",
+                paddingRight: 0,
+              }
+            }}
+          />
+        )}
         value={searchEntry}
         onChange={(e, newValue, reason) => {
           if (reason === 'clear') {
@@ -46,20 +63,6 @@ function SearchParks(props) {
           }
         }}
       />
-      <Button
-        style={{ width: 100 }}
-        variant="contained"
-        onClick={(e) => {
-          if (props.selectedParkId) {
-            navToPark();
-          } else {
-            // handle park not selected!
-            console.log('please select a park, or visit explore')
-          }
-        }}
-      >
-        Go!
-      </Button>
     </div>
   )
 };
