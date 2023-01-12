@@ -4,6 +4,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Chip, Typography } from 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import axios from 'axios';
+import dotenv from 'dotenv';
 import Map from '../explore/map';
 
 function Park(props) {
@@ -17,22 +18,9 @@ function Park(props) {
     getParkData();
   }, []);
 
-  useEffect(() => {
-    getActivities();
-  }, []);
-
-  const navigate = useNavigate();
-  function navToHome() {
-    navigate('/');
-  };
-
-  function getActivities() {
-
-  };
-
   function getParkData() {
     if (!props.selectedParkId) {
-      navToHome();
+      nav('/');
     } else {
       axios.get(`http://localhost:3000/park/${props.selectedParkId}`)
       .catch((err) => {
@@ -40,9 +28,26 @@ function Park(props) {
       })
       .then((results) => {
         setSelectedParkData(results.data);
+        return results.data.parkCode;
+      })
+      .then((parkCode) => {
+        return axios.get(`http://developer.nps.gov/api/v1/thingstodo?api_key=${import.meta.env.VITE_NPS_API_KEY}&parkCode=${parkCode}`)
+      })
+      .catch((err) => {
+        console.log('error retrieving activities data:', err);
+      })
+      .then((results) => {
+        setParkActivities(results.data.data);
       })
     }
   };
+
+  const navigate = useNavigate();
+
+  function nav(destination) {
+    navigate(destination);
+  };
+
 
   function normalizePhone(str) {
     let norm = str.split('').filter(x => Number.isInteger(parseInt(x))).join('');
@@ -77,7 +82,13 @@ function Park(props) {
           />
         </div>
         <div id="parkContentContainer">
-          <h2>Find your next adventure</h2>
+          <div id="parkNavContainer">
+              <span className="navItem"><a href="#parkDescriptionContainer">EXPLORE THE MAP</a></span>
+              <span className="navItem"><a href="#parkActivitiesHeader">ACTIVITIES & EXPERIENCES</a></span>
+              <span className="navItem"><a href="#parkPhotoGalleryHeader">PHOTO GALLERY</a></span>
+              <span className="navItem"><a href="#parkInfoHeader">PARK INFORMATION</a></span>
+          </div>
+          <h2 id="parkDescriptionHeader">Find your next adventure</h2>
           <div id="parkDescriptionContainer">
             <p>{selectedParkData.description}</p>
           </div>
@@ -89,11 +100,28 @@ function Park(props) {
                 zoom={11}
               />
           </div>
-          <h2>Activites & Experiences</h2>
 
+          <h2 id="parkActivitiesHeader">Activites & Experiences</h2>
+          {parkActivities && <div id="parkActivitiesContainer">
+            {parkActivities.map((activity) => (
+              <div className="tileContainer activityTileContainer" key={activity.id}>
+                <div className="tilePhotoContainer">
+                  <img
+                    className="tilePhoto"
+                    src={activity.images[0].url}
+                    alt={activity.images[0].altText}
+                    onError={(e) => {e.target.style.display = 'none'}}
+                  />
+                </div>
+                <div className="activityTileInfo">
+                  <p className="tileName">{activity.title}</p>
+                  <p>{activity.shortDescription}</p>
+                </div>
+              </div>
+            ))}
+          </div>}
 
-
-          <h2>Photo gallery</h2>
+          <h2 id="parkPhotoGalleryHeader">Photo gallery</h2>
           <div className="parkPhotoGallery">
             {selectedParkData.images.map((image) => (
               <img
@@ -101,13 +129,12 @@ function Park(props) {
                 key={image._id}
                 src={image.url}
                 alt={image.altText}
-                onError={(e) => {
-                    e.target.style.display = 'none'
-                }}
+                onError={(e) => {e.target.style.display = 'none'}}
               />
             ))}
           </div>
-          <h2>Park Information</h2>
+
+          <h2 id="parkInfoHeader">Park Information</h2>
           <div id="parkInfoContainer">
             <div className="accordionContainer">
               <Accordion>

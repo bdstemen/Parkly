@@ -18,23 +18,21 @@ function ParkTile(props) {
 
   return (
     <div
-      className="parkTileContainer"
+      className="tileContainer"
       onClick={(e) => {
         props.setSelectedParkId(props.parkData._id);
         navToPark();
       }}
     >
-      <div className="parkTilePhotoContainer">
+      <div className="tilePhotoContainer">
         <img
-          className="parkTilePhoto"
+          className="tilePhoto"
           src={props.parkData.images[0].url}
           alt={props.parkData.images[0].altText}
         />
       </div>
-      <div className="parkTileInfo">
-        <p
-          className="parkTileName"
-        >
+      <div>
+        <p className="tileName">
           {props.parkData.fullName}
         </p>
         <p>

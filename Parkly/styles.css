@@ -1,10 +1,19 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 #main {
-  margin-bottom: 20px;
+  margin-top:65px;
 }
 
 /* header & nav bar */
@@ -35,8 +44,8 @@ header {
 
 .navItem {
   margin: 0 20px;
-  text-decoration: none;
   color:white;
+  text-align: center;
 }
 
 .navItem:hover {
@@ -51,6 +60,7 @@ header {
 
 .bannerText {
   width: 90%;
+  margin: 0;
   text-align: center;
   font-size: 50px;
   color: white;
@@ -65,7 +75,7 @@ header {
   height: 70px;
   display: flex;
   position: relative;
-  top: -35px;
+  top: -40px;
   z-index: 10;
   display: flex;
   justify-content: space-evenly;
@@ -134,7 +144,7 @@ header {
 
 /* Park Tile */
 
-.parkTileContainer {
+.tileContainer {
   position: relative;
   margin: 25px;
   width: 350px;
@@ -144,11 +154,11 @@ header {
   align-items: left;
 }
 
-.parkTileContainer:hover {
+.tileContainer:hover {
   cursor: pointer;
 }
 
-.parkTilePhotoContainer {
+.tilePhotoContainer {
   height: 250px;
   width: 350px;
   overflow: hidden;
@@ -156,28 +166,24 @@ header {
   border-radius: 10px;
 }
 
-.parkTilePhoto {
+.tilePhoto {
   height: 100%;
   width: 100%;
   object-fit: cover;
   transition: transform .5s ease;
 }
 
-.parkTileContainer:hover img {
+.tileContainer:hover img {
   transform: scale(1.1);
   transform-origin: 50% 50%;
 }
 
-.parkTileInfo {
-
-}
-
-.parkTileName {
+.tileName {
   font-weight: 600;
   font-size: 20px;
 }
 
-.parkTileContainer p {
+.tileContainer p {
   margin: 0;
 }
 
@@ -237,11 +243,35 @@ header {
   transform-origin: 50% 50%;
 }
 
+#parkNavContainer {
+  height: 65px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+
 #parkContentContainer {
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#parkActivitiesContainer {
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.activityTileContainer {
+  height: 400px;
+}
+
+.activityTileInfo {
+  height: 150px;
 }
 
 .parkPhotoGallery {
@@ -258,6 +288,7 @@ header {
 }
 
 #parkDescriptionContainer {
+
 }
 
 #parkInfoContainer {
@@ -271,4 +302,9 @@ header {
 #parkMapContainer {
   width: 100%;
   height: 800px;
+}
+
+#parkDescriptionHeader, #parkActivitiesHeader, #parkPhotoGalleryHeader, #parkInfoHeader {
+  align-self: flex-start;
+  scroll-margin-top: 70px;
 }
