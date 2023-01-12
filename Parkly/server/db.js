@@ -13,6 +13,7 @@ const parkSchema = new mongoose.Schema({
   id: String,
   url: String,
   fullName: String,
+  parkCode: String,
   description: String,
   latitude: String,
   longitude: String,

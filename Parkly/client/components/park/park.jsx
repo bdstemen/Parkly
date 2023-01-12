@@ -18,12 +18,16 @@ function Park(props) {
   }, []);
 
   useEffect(() => {
-    // axios.get(``)
+    getActivities();
   }, []);
 
   const navigate = useNavigate();
   function navToHome() {
     navigate('/');
+  };
+
+  function getActivities() {
+
   };
 
   function getParkData() {
