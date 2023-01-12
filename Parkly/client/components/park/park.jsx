@@ -72,15 +72,15 @@ function Park(props) {
         <div className="parkInfoContainer">
           <h3>Address & Phone</h3>
           <div className="parkBasicInfoContainer">
-            {selectedParkData.addresses.filter(address => address.type === 'Physical').map((address) => (
-              <div className="parkAddress">
+            {selectedParkData.addresses.filter(address => address.type === 'Physical').map((address, index) => (
+              <div className="parkAddress" key={index}>
                 <p>{address.line1}</p>
                 {address.line2 && <p>{address.line2}</p>}
                 <p>{address.city}, {address.stateCode} {address.postalCode}</p>
               </div>
             ))}
-            {selectedParkData.contacts.phoneNumbers.filter(phone => phone.type === 'Voice').map((phone) => (
-              <div className="parkPhone">
+            {selectedParkData.contacts.phoneNumbers.filter(phone => phone.type === 'Voice').map((phone, index) => (
+              <div className="parkPhone" key={index}>
                 <p>{normalizePhone(phone.phoneNumber)}</p>
               </div>
             ))}
@@ -88,9 +88,10 @@ function Park(props) {
           <h3>Hours</h3>
           <div className="parkHoursContainer">
             {selectedParkData.operatingHours.map((hours) => (
-              <div className="parkHoursItem">
+              <div className="parkHoursItem" key={hours.name}>
                 <p>{hours.name}</p>
                 <table>
+                <tbody>
                   <tr>
                     <td>Sunday</td>
                     <td>{hours.standardHours.sunday}</td>
@@ -119,6 +120,7 @@ function Park(props) {
                     <td>Saturday</td>
                     <td>{hours.standardHours.saturday}</td>
                   </tr>
+                </tbody>
                 </table>
                 <p>{hours.description}</p>
               </div>
@@ -127,13 +129,13 @@ function Park(props) {
           <h3>Entrance Fees & Passes</h3>
           <div className="parkEntranceFeesContainer">
             {selectedParkData.entranceFees.map((entranceFee) => (
-              <div>
+              <div key={entranceFee.title}>
                 <p><b>{entranceFee.title}</b> - ${entranceFee.cost}</p>
                 <p>{entranceFee.description}</p>
               </div>
             ))}
             {selectedParkData.entrancePasses.map((entrancePass) => (
-              <div>
+              <div key={entrancePass.title}>
                 <p><b>{entrancePass.title}</b> - ${entrancePass.cost}</p>
                 <p>{entrancePass.description}</p>
               </div>

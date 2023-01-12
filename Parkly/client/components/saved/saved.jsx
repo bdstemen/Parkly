@@ -16,18 +16,18 @@ function Saved(props) {
   }
 
   function updateSavedParks(id, savedStatus) {
-    props.savePark(id, savedStatus);
-    getSavedParks();
+    props.savePark(id, savedStatus).then(() => getSavedParks())
   }
 
   return (
-    <div>
+    <div id="savedParksContainer">
       {props.parkData && props.parkData.map((park) => (
         <ParkTile
           key={park._id}
           parkData={park}
           savePark={updateSavedParks}
           setSelectedParkId={props.setSelectedParkId}
+          userLocation={props.userLocation}
         />
       ))}
     </div>
