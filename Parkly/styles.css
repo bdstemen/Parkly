@@ -1,17 +1,211 @@
-html {
-
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
-#filterContainer {
+#main {
+  margin-bottom: 20px;
+}
+
+/* header & nav bar */
+header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  height: 65px;
+  width: 100%;
+  margin: 0;
+  background-color: white;;
+  border-bottom: 1px solid lightgray;
   display: flex;
   align-items: center;
 }
 
-.parkTilePhoto {
-  height: 200px;
-  width: 300px;
+#logo {
+  font-size: 40px;
+  color: #1A3300;
+}
+
+#navList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navItem {
+  margin: 0 20px;
+  text-decoration: none;
+  color: #1A3300;
+}
+
+.navItem:hover {
+  cursor: pointer;
+}
+
+/* home page */
+#homePageContainer {
+  position: relative;
+  height: 500px;
+}
+
+#bannerText {
+  font-size: 50px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#homePageSearchContainer {
+  height: 70px;
+  display: flex;
+  position: relative;
+  top: -35px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#autocompleteContainer {
+  width: 40%;
+}
+
+#homePageBannerPhoto {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
+
+.homeContainerLabel {
+  margin-left: 10%;
+}
+
+.homeParkTileContainer {
+  position: relative;
+  margin: 0 10%;
+  width: 80%;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+/* Explore Page */
+#exploreContainer {
+
+}
+
+#mapContainer {
+  position: fixed;
+  top: 132px;
+  right: 0;
+  height: calc(100% - 132px);
+  width: calc(100% - 400px);
+}
+
+#parkListContainer {
+  position: fixed;
+  top: 132px;
+  left: 0;
+  width: 400px;
+  height: calc(100% - 132px);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#filterContainer {
+  position: fixed;
+  top: 66px;
+  height: 65px;
+  width: 100%;
+  padding-left: 13px;
+  z-index: 10;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+}
+
+/* Park Tile */
+
+.parkTileContainer {
+  position: relative;
+  margin: 25px;
+  width: 350px;
+  height: 365px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.parkTileContainer:hover {
+  cursor: pointer;
+}
+
+.parkTilePhotoContainer {
+  height: 250px;
+  width: 350px;
+  overflow: hidden;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+
+.parkTilePhoto {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.parkTileContainer:hover img {
+  transform: scale(1.1);
+  transform-origin: 50% 50%;
+}
+
+.parkTileInfo {
+
+}
+
+.parkTileName {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.parkTileContainer p {
+  margin: 0;
+}
+
+.saveParkIcon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  height: 30px;
+  width: 30px;
+  z-index: 9;
+}
+
+.saveParkIcon:hover {
+  transform: scale(1.2);
+  transform-origin: 50% 50%;
+}
+
+/* Saved Parks */
+
+#savedParksContainer {
+  position: relative;
+  top: 66px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* Park Page */
 
 .parkBannerPhoto {
   height: 400px;
