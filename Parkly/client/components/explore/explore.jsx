@@ -21,10 +21,6 @@ function Explore(props) {
     props.getParks(JSON.stringify({}));
   }, [])
 
-  function saveAndUpdateParks(id, savedStatus) {
-    props.savePark(id, savedStatus).then(() => props.getParks(JSON.stringify(filters)));
-  }
-
   return (
     <div>
       <div id="filterContainer">
@@ -36,7 +32,7 @@ function Explore(props) {
       </div>
       <div id="ExploreContainer">
         <div id="mapContainer">
-          {props.parkData && (
+          {props.userLocation && (
             <Map
               parkData={props.parkData}
               coords={{
@@ -47,6 +43,7 @@ function Explore(props) {
                 width: '100%',
                 height: '100%'
               }}
+              zoom={5}
             />
           )}
         </div>
@@ -56,7 +53,8 @@ function Explore(props) {
               key={park._id}
               parkData={park}
               setSelectedParkId={props.setSelectedParkId}
-              savePark={saveAndUpdateParks}
+              savePark={props.savePark}
+              filter={filters}
               userLocation={props.userLocation}
             />
           ))}

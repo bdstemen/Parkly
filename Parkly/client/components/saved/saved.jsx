@@ -9,27 +9,25 @@ function Saved(props) {
   }, [])
 
   function getSavedParks() {
-    let filter = {
-      saved: true
-    };
+    let filter = { saved: true };
     props.getParks(JSON.stringify(filter));
   }
 
-  function updateSavedParks(id, savedStatus) {
-    props.savePark(id, savedStatus).then(() => getSavedParks())
-  }
-
   return (
-    <div id="savedParksContainer">
-      {props.parkData && props.parkData.map((park) => (
-        <ParkTile
-          key={park._id}
-          parkData={park}
-          savePark={updateSavedParks}
-          setSelectedParkId={props.setSelectedParkId}
-          userLocation={props.userLocation}
-        />
-      ))}
+    <div id="savedPageContainer">
+      <h1 id="savedParksHeader">Places you love:</h1>
+      <div id="savedParksContainer">
+        {props.parkData && props.parkData.map((park) => (
+          <ParkTile
+            key={park._id}
+            parkData={park}
+            savePark={props.savePark}
+            filter={{saved: true}}
+            setSelectedParkId={props.setSelectedParkId}
+            userLocation={props.userLocation}
+          />
+        ))}
+      </div>
     </div>
   )
 }

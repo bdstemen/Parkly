@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import distance from '../../../utils.js';
-import { FaHeart, FaRegHeart } from 'react-icons/fa'
+import distance from '../../../utils/utils.js';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 function ParkTile(props) {
 
@@ -48,7 +48,7 @@ function ParkTile(props) {
           color="white"
           onClick={(e) => {
             e.stopPropagation();
-            props.savePark(props.parkData._id, !props.parkData.saved);
+            props.savePark(props.parkData._id, !props.parkData.saved, props.filter);
           }}
         />
       : <FaRegHeart
@@ -56,7 +56,7 @@ function ParkTile(props) {
           color="white"
           onClick={(e) => {
             e.stopPropagation();
-            props.savePark(props.parkData._id, !props.parkData.saved);
+            props.savePark(props.parkData._id, !props.parkData.saved, props.filter);
           }}
         />}
     </div>

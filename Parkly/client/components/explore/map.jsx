@@ -15,7 +15,7 @@ function Map(props) {
     >
       <GoogleMap
         mapContainerStyle={props.containerStyle}
-        center={props.coords || {
+        center={{
           lat: 39.591111,
           lng: -97.398923
         }}
@@ -27,7 +27,7 @@ function Map(props) {
             key={park._id}
             position={{ lat: parseFloat(park.latitude), lng: parseFloat(park.longitude) }}
             onClick={() => {setShowParkDetails(park)}}
-            icon={{ url: '../../../mapMarker.svg', scaledSize: { width: 20, height: 20}}}
+            icon={{ url: '../../../mapMarker.svg', scaledSize: { width: 20, height: 20} }}
           />
         ))}
         {showParkDetails && (

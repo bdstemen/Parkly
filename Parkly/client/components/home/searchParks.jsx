@@ -28,26 +28,13 @@ function SearchParks(props) {
         getOptionLabel={(option) => option.fullName || ""}
         isOptionEqualToValue={(option, value) => option.id === value.id}
         renderInput={(params) => (
-          <TextField {...params}
+          <TextField
+            {...params}
             placeholder="Search for a national park"
             sx={{
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "white",
                 height: "70px",
-                legend: {
-                  marginLeft: "30px"
-                }
-              },
-              "& .MuiAutocomplete-inputRoot": {
-                paddingLeft: "20px !important",
-              },
-              "& .MuiInputLabel-outlined": {
-                paddingLeft: "20px",
-              },
-              "& .MuiInputLabel-shrink": {
-                marginLeft: "20px",
-                paddingLeft: "10px",
-                paddingRight: 0,
               }
             }}
           />

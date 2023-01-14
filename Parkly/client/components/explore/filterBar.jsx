@@ -1,22 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, TextField } from '@mui/material';
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: "150px",
-    },
-  },
-};
-
-const states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
-
-const designations = ["National Park", "National Monument", "National Preserve", "National Historic Site", "National Historic Park", "National Memorial", "National Battlefield", "National Cemetary", "National Recreation Area", "National Seashore", "National Lakeshore", "National River", "National Parkway", "National Trail", "Affiliated Areas"];
-
-const activities = ['Astronomy', 'Stargazing', 'Food', 'Picnicking', 'Guided Tours', 'Self-Guided Tours - Walking', 'Hands-On', 'Junior Ranger Program', 'Wildlife Watching', 'Birdwatching', 'Park Film', 'Museum Exhibits', 'Shopping', 'Bookstore and Park Store', 'Gift Shop and Souvenirs', 'Arts and Culture', 'Cultural Demonstrations', 'Biking', 'Boating', 'Camping', 'Group Camping', 'Climbing', 'Rock Climbing', 'Compass and GPS', 'Geocaching', 'Fishing', 'Freshwater Fishing', 'Fly Fishing', 'Saltwater Fishing', 'Bus/Shuttle Guided Tour', 'Boat Tour', 'Citizen Science', 'Hiking', 'Front-Country Hiking', 'Horse Trekking', 'Horseback Riding', 'Ice Skating', 'Paddling', 'Canoeing', 'Kayaking', 'Stand Up Paddleboarding', 'Skiing', 'Cross-Country Skiing', 'Snow Play', 'Snowmobiling', 'Snowshoeing', 'Swimming', 'Freshwater Swimming', 'Saltwater Swimming', 'Living History', 'First Person Interpretation', 'Auto and ATV', 'Scenic Driving', 'Mountain Biking', 'Road Biking', 'Motorized Boating', 'Sailing', 'Canoe or Kayak Camping', 'Car or Front Country Camping', 'RV Camping', 'Orienteering', 'Self-Guided Tours - Auto', 'Arts and Crafts', 'SCUBA Diving', 'Snorkeling', 'Surfing', 'Backcountry Camping', 'Hunting and Gathering', 'Hunting', 'Whitewater Rafting', 'Craft Demonstrations', 'Historic Weapons Demonstration', 'Theater', 'Jet Skiing', 'Water Skiing', 'Playground', 'Team Sports', 'Reenactments', 'Mountain Climbing', 'Flying', 'Backcountry Hiking', 'Volunteer Vacation', 'Canyoneering', 'Auto Off-Roading', 'Horse Camping (see also Horse/Stock Use)', 'Off-Trail Permitted Hiking', 'Horse Camping (see also camping)', 'Dining', 'Tubing', 'Snow Tubing', 'Dog Sledding', 'Fixed Wing Flying', 'Gathering and Foraging', 'ATV Off-Roading', 'Pool Swimming', 'Live Music', 'Caving', 'Golfing', 'River Tubing', 'Ice Climbing', 'Downhill Skiing', 'Helicopter Flying', 'Mini-Golfing', 'Planetarium'];
+import { states, designations, activities } from '../../../utils/shared.js';
+import { MenuProps } from '../../../styles.js';
 
 function FilterBar(props) {
 
@@ -106,7 +91,7 @@ function FilterBar(props) {
       <FormControl size="small">
         <Button
           size="small"
-          style={{ margin: 15, width: 100, height: 40, backgroundColor: "#1A3300" }}
+          style={{ margin: 15, width: 100, height: 40}}
           variant="contained"
           onClick={(e) => {
             e.preventDefault();
