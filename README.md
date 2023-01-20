@@ -13,3 +13,24 @@ Parkly is a multipage web application designed to help users discover and explor
 
 ## Demo
 [Demo Video](https://drive.google.com/file/d/1o4Zq98R9b2dtdowJidgzdpqSwTu2lt4q/view?usp=share_link)
+
+## Page Details & Demos
+### Home Page
+home page description
+
+<img src="./Parkly/demos/home.gif" height=500 />
+
+### Explore Page
+explore page description
+
+<img src="./Parkly/demos/explore.gif" height=500 />
+
+### Park Detail Page
+park detail page description
+
+<img src="./Parkly/demos/detail.gif" height=500 />
+
+### Saved Page
+saved page description
+
+<img src="./Parkly/demos/saved.gif" height=500 />
