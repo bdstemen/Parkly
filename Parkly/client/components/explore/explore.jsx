@@ -35,10 +35,7 @@ function Explore(props) {
           {props.userLocation && (
             <Map
               parkData={props.parkData}
-              coords={{
-                lng: props.userLocation[0],
-                lat: props.userLocation[1]
-              }}
+              setSelectedParkId={props.setSelectedParkId}
               containerStyle = {{
                 width: '100%',
                 height: '100%'

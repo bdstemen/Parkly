@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import mapStyles from '../../../mapStyle.js';
 import dotenv from 'dotenv';
+import { useNavigate } from 'react-router-dom';
 
 function Map(props) {
 
   // State
   const [showParkDetails, setShowParkDetails] = useState(null);
+
+  // Navigation
+  let nav = useNavigate();
 
   return (
     <LoadScript
@@ -15,7 +19,7 @@ function Map(props) {
     >
       <GoogleMap
         mapContainerStyle={props.containerStyle}
-        center={{
+        center={props.coords || {
           lat: 39.591111,
           lng: -97.398923
         }}
@@ -35,7 +39,17 @@ function Map(props) {
             position={{ lat: parseFloat(showParkDetails.latitude), lng: parseFloat(showParkDetails.longitude) }}
             onCloseClick={() => {setShowParkDetails(null)}}
           >
-            <div>{showParkDetails.fullName}</div>
+            <div>
+              <p
+                className="infoWindowTitle"
+                onClick={(() => {
+                  props.setSelectedParkId(showParkDetails._id);
+                  nav('/Park');
+                })}
+              >
+                {showParkDetails.fullName}
+              </p>
+            </div>
           </InfoWindow>
         )}
       </GoogleMap>

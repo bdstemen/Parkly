@@ -221,6 +221,15 @@ header {
   transform-origin: 50% 50%;
 }
 
+.infoWindowTitle {
+  margin: 0;
+}
+
+.infoWindowTitle:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* Saved Parks */
 
 #savedPageContainer{
