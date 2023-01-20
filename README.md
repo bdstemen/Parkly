@@ -23,7 +23,7 @@ home page description
 ### Explore Page
 explore page description
 
-<img src="./Parkly/demos/explore.gif" height=500 />
+<img src="./Parkly/demos/expolore.gif" height=500 />
 
 ### Park Detail Page
 park detail page description
