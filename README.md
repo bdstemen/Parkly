@@ -12,3 +12,4 @@ Parkly is a multipage web application designed to help users discover and explor
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
 ## Demo
+[Demo Video](https://drive.google.com/file/d/1o4Zq98R9b2dtdowJidgzdpqSwTu2lt4q/view?usp=share_link)
