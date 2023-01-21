@@ -35,4 +35,4 @@ Throughout the application, users can click on the heart icon on each park tile 
 <img src="./Parkly/demos/saved.gif" height=500 />
 
 # Credit
-All of the national parks data used for this project came from the US National Park Service
+All of the national parks data used for this project was sourced from the US National Park Service API
