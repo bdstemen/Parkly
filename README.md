@@ -1,5 +1,7 @@
 # Parkly
-Parkly is a multipage web application designed to help users discover and explore national parks in the United States.
+Parkly is a multipage web application designed to help users discover and explore national parks in the United States. Users can search for parks nationwide or within a certain distance from their current location, filter parks based on activities and location, and view details about each park. Additionally, users can add parks they've visited or are interested in visiting to their saved parks list for later reference. 
+
+This project was completed in 3 days as a part of Hack Reactor's software engineering immersive program during the MVP (minimum viable product) phase, wherein one of the key challenges is planning and managing realistic expectations for a full-stack application build from scratch under severe time constraints.
 
 ## Tech Stack
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
