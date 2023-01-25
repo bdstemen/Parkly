@@ -39,7 +39,7 @@ function Home(props) {
           <Button
             color='primary'
             variant='contained'
-            sx={{ width: '42.5%'}}
+            sx={{ width: '40%'}}
             onClick={() => {
               if (props.selectedParkId) navigate('/park');
               else navigate('/explore');
@@ -53,7 +53,11 @@ function Home(props) {
       <h1 className="homeContainerLabel">Popular parks:</h1>
       {props.parkData &&
         <div className="homeParkTileContainer">
-          <Carousel responsive={responsive} containerClass="carousel-container">
+          <Carousel
+            responsive={responsive}
+            containerClass="carousel-container"
+
+          >
             {props.parkData.filter((park) => popularParks.includes(park.fullName)).map((park) => (
               <ParkTile
                 key={park._id}
