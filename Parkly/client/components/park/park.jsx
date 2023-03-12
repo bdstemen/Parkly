@@ -12,11 +12,9 @@ import { responsive } from '../../../utils/shared.js';
 
 function Park(props) {
 
-  // State
   const [selectedParkData, setSelectedParkData] = useState(null);
   const [parkActivities, setParkActivities] = useState(null);
 
-  // Functions
   const navigate = useNavigate();
 
   useEffect(() => {

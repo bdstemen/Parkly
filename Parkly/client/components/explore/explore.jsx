@@ -7,7 +7,6 @@ import Map from './map';
 
 function Explore(props) {
 
-  // State
   const [filters, setFilters] = useState({
     miles: null,
     currentLoc: props.userLocation,
@@ -16,7 +15,6 @@ function Explore(props) {
     designation: []
   });
 
-  // Functions
   useEffect(() => {
     props.getParks(JSON.stringify({}));
   }, [])

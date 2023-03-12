@@ -9,10 +9,8 @@ import { popularParks, responsive } from '../../../utils/shared.js';
 
 function Home(props) {
 
-  // Navigation
   const navigate = useNavigate();
 
-  // Functions
   useEffect(() => {
     props.getParks(JSON.stringify({}));
   }, [])

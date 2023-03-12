@@ -7,10 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Map(props) {
 
-  // State
   const [showParkDetails, setShowParkDetails] = useState(null);
 
-  // Navigation
   let nav = useNavigate();
 
   return (

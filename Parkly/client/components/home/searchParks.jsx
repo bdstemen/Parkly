@@ -5,11 +5,9 @@ import axios from 'axios';
 
 function SearchParks(props) {
 
-  // State
   const [parkNames, setParkNames] = useState([]);
   const [searchEntry, setSearchEntry] = useState('');
 
-  // Functions
   useEffect(() => {
     axios.get(`http://localhost:3000/parkNames`)
       .catch((err) => {

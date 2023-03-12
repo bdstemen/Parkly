@@ -10,13 +10,10 @@ import { theme } from '../../styles.js'
 
 function App() {
 
-  // State
   const [selectedParkId, setSelectedParkId] = useState('');
   const [parkData, setParkData] = useState([]);
-  // const [userLocation, setUserLocation] = useState([-97.398923, 39.591111]);
   const [userLocation, setUserLocation] = useState(null);
 
-  // Functions
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       var lat = position.coords.latitude;

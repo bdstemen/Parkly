@@ -5,7 +5,6 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 function ParkTile(props) {
 
-  // Functions
   const navigate = useNavigate();
   function navToPark() {
     navigate('/park');
