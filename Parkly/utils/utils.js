@@ -13,11 +13,9 @@ export default function distance(lat1, lat2, lon1, lon2) {
   let a = Math.pow(Math.sin(dlat / 2), 2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2),2);
   let c = 2 * Math.asin(Math.sqrt(a));
 
-  // Radius of earth in kilometers. Use 3956
-  // for miles
-  let r = 6371;
-  let conversion = 0.621371;
+  // Radius of earth in miles
+  let r = 3956;
 
   // calculate the result
-  return(c * r * conversion);
+  return(c * r);
 };
