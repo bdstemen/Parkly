@@ -37,17 +37,3 @@ app.put('/visited/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
-
-
-// const sessionConfig = {
-//   secret: 'MYSECRET',
-//   name: 'appName',
-//   resave: false,
-//   saveUninitialized: false,
-//   store: store,
-//   cookie : {
-//     sameSite: 'strict', // THIS is the config you are looing for.
-//   }
-// };
-
-// app.use(session(sessionConfig));

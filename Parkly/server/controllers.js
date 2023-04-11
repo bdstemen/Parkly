@@ -39,7 +39,6 @@ const controller = {
         res.status(501).send(err);
       })
       .then((results) => {
-        // res.cookie('cookieName', 'cookieValue', { SameSite: 'none', secure: true})
         res.status(200).send(results);
       })
   },
@@ -55,13 +54,11 @@ const controller = {
   },
 
   getParkNames: function(req, res) {
-    // return Park.find({ fullName: { "$regex": req.body.name, "$options": "i" } }, 'fullName _id')
     return Park.find({}, 'fullName _id')
       .catch((err) => {
         res.status(501).send(err);
       })
       .then((results) => {
-        // res.cookie('cookieName', 'cookieValue', { SameSite: 'none', secure: true})
         res.status(200).send(results);
       })
   },
